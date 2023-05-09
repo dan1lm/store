@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   }
 
   onAddToCart(product: Product): void{
-    this.cartService.addToCart({
+    this.cartService.addToCart({                         //Matching the API product names
       product: product.image,
       name: product.title,
       price: product.price,
