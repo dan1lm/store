@@ -2,8 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product.model';
+import { of } from 'rxjs';
 
 const STORE_BASE_URL = 'https://fakestoreapi.com';
+
+const TEST_BASE_URL = "http://127.0.0.1:8000";
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +17,15 @@ export class StoreService {
 
   getAllProducts(limit='12', sort='desc', category?: string): Observable<Array<Product>>{
     return this.httpClient.get<Array<Product>>(
-      `${STORE_BASE_URL}/products${category? '/category/' + category : ''}?sort=${sort}&limit=${limit}`
+      //`${STORE_BASE_URL}/products${category? '/category/' + category : ''}?sort=${sort}&limit=${limit}`           
+      `${TEST_BASE_URL}/products${category? '/category/' + category : ''}?sort=${sort}&limit=${limit}`
     )
   }
 
   getAllCategories(): Observable<Array<string>> {
     return this.httpClient.get<Array<string>>(
-      `${STORE_BASE_URL}/products/categories`
+      //`${STORE_BASE_URL}/products/categories`
+      `${TEST_BASE_URL}/products/categories`
     )
   }
 }
